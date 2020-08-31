@@ -20,7 +20,7 @@ function callAPI($method, $url, $data){
    // OPTIONS:
    curl_setopt($curl, CURLOPT_URL, $url);
    curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-      'API-Key: Enter API Key',
+      'API-Key: Enter API Key1',
       'Content-Type: application/json',
    ));
    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
