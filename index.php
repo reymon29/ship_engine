@@ -50,7 +50,14 @@
 
   // Return response to page
   echo json_encode($data);
+
   // return the pdf url to the label created
-  $print_data = $_POST[$data["label_download"]["pdf"]];
+  $print_data = $data["label_download"]["zpl"];
+  echo $print_data;
+
+  $newfile = './temp/file.zpl';
+  copy($print_data, $newfile);
+  // using cups command for unix based systems to print to default printer
+  exec('lp -d Zebra_Technologies_ZTC_ZP_500__ZPL_ -o raw temp/file.zpl');
 
 ?>
