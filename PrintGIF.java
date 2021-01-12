@@ -48,16 +48,18 @@ public class PrintGIF {
 
                 /* Create a set which specifies how the job is to be printed */
                 PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
-                aset.add(MediaSizeName.NA_LETTER);
+                aset.add(OrientationRequested.PORTRAIT);
                 aset.add(new Copies(1));
 
                 /* Locate print services which can print a GIF in the manner specified */
                 PrintService[] pservices =
                         PrintServiceLookup.lookupPrintServices(flavor, aset);
+                        System.out.println(PrintServiceLookup.lookupPrintServices(flavor, aset));
 
                 if (pservices.length > 0) {
                         /* Create a Print Job */
                         DocPrintJob printJob = pservices[0].createPrintJob();
+
 
                         /* Create a Doc implementation to pass the print data */
                         Doc doc = new InputStreamDoc("./temp/file.pdf", flavor);
