@@ -55,10 +55,10 @@
   $print_data = $data["label_download"]["pdf"];
   echo $print_data;
 
-  $newfile = './temp/file.pdf';
+  $newfile = 'C:/H-Block/temp/file.pdf';
   copy($print_data, $newfile);
   // using cups command for unix based systems to print to default printer
   // exec('lp -d Zebra_Technologies_ZTC_ZP_500__ZPL_ -o raw temp/file.zpl');
-  shell_exec('Java /Users/reyesmontemayor/code/reymon29/ship_engine/PrintGIF.java')
+  shell_exec('Java C:/H-Block/PrintGIF.java')
 
 ?>

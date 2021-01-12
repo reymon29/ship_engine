@@ -52,11 +52,13 @@ public class PrintGIF {
                 aset.add(new Copies(1));
 
                 /* Locate print services which can print a GIF in the manner specified */
-                PrintService[] pservices =
-                        PrintServiceLookup.lookupPrintServices(flavor, aset);
-                        System.out.println(PrintServiceLookup.lookupPrintServices(flavor, aset));
+                PrintService[] pservices = PrintServiceLookup.lookupPrintServices(flavor, aset);
 
                 if (pservices.length > 0) {
+                        /* display all printers available*/
+                        for (PrintService printer : pservices)
+                        System.out.println("Printer: " + printer.getName());
+
                         /* Create a Print Job */
                         DocPrintJob printJob = pservices[0].createPrintJob();
 
@@ -120,3 +122,4 @@ class InputStreamDoc implements Doc {
                 }
         }
 }
+
