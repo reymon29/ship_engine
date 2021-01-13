@@ -52,13 +52,13 @@
   echo json_encode($data);
 
   // return the pdf url to the label created
-  $print_data = $data["label_download"]["pdf"];
+  $print_data = $data["label_download"]["png"];
   echo $print_data;
 
-  $newfile = 'C:/H-Block/temp/file.pdf';
+  $newfile = './temp/file.png';
   copy($print_data, $newfile);
   // using cups command for unix based systems to print to default printer
   // exec('lp -d Zebra_Technologies_ZTC_ZP_500__ZPL_ -o raw temp/file.zpl');
-  shell_exec('Java C:/H-Block/PrintGIF.java')
+  shell_exec('Java ./PrintGIF.java')
 
 ?>

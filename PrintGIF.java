@@ -43,8 +43,9 @@ public class PrintGIF {
 
         public static void main(String args[]) {
 
-                /* Use the pre-defined flavor for a GIF from an InputStream */
-                DocFlavor flavor = DocFlavor.INPUT_STREAM.GIF;
+                /* Use the pre-defined flavor for a PNG from an InputStream */
+                DocFlavor flavor = DocFlavor.INPUT_STREAM.PNG
+                ;
 
                 /* Create a set which specifies how the job is to be printed */
                 PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
@@ -64,7 +65,7 @@ public class PrintGIF {
 
 
                         /* Create a Doc implementation to pass the print data */
-                        Doc doc = new InputStreamDoc("./temp/file.pdf", flavor);
+                        Doc doc = new InputStreamDoc("./temp/file.png", flavor);
 
                         /* Print the doc as specified */
                         try {
