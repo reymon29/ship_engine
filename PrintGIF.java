@@ -33,7 +33,7 @@ import java.io.*;
 import javax.print.*;
 import javax.print.attribute.*;
 import javax.print.attribute.standard.*;
-
+import java.net.URL;
 /*
 *  Use the Java Print Service API to locate a print service which
 *  can print a GIF-encoded image. A GIF image is printed according to
@@ -41,8 +41,12 @@ import javax.print.attribute.standard.*;
 */
 public class PrintGIF {
 
-        public static void main(String args[]) {
 
+        public static void main(String args[]) throws Exception {
+                String imageUrl = args[0];
+                System.out.println(imageUrl);
+                String destinationFile = "./temp/file.png";
+                saveImage(imageUrl, destinationFile);
                 /* Use the pre-defined flavor for a PNG from an InputStream */
                 DocFlavor flavor = DocFlavor.INPUT_STREAM.PNG
                 ;
@@ -77,6 +81,22 @@ public class PrintGIF {
                         System.err.println("No suitable printers");
                 }
         }
+    public static void saveImage(String imageUrl, String destinationFile) throws IOException {
+    URL url = new URL(imageUrl);
+    InputStream is = url.openStream();
+    OutputStream os = new FileOutputStream(destinationFile);
+
+    byte[] b = new byte[2048];
+    int length;
+
+    while ((length = is.read(b)) != -1) {
+      os.write(b, 0, length);
+    }
+
+    is.close();
+    os.close();
+  }
+
 }
 
 class InputStreamDoc implements Doc {
@@ -123,4 +143,6 @@ class InputStreamDoc implements Doc {
                 }
         }
 }
+
+
 
